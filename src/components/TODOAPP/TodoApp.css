@@ -1,0 +1,118 @@
+/* Overall Page Styles */
+body {
+    color: #f4f4f4;
+    background-color: #000000; /* Softer dark background */
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* To-Do List Container */
+.to-do-list {
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px;
+    background-color: #000000;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Title */
+h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #e3ff11; /* Light blue */
+}
+
+/* Input Field */
+input[type="text"] {
+    width: 80%;
+    max-width: 400px;
+    padding: 12px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+/* General Button Styles */
+button {
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px 15px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 5px;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+/* Add Button */
+.add-button {
+    background-color: #28a745; /* Green */
+}
+
+.add-button:hover {
+    background-color: #218838; /* Darker Green */
+    transform: scale(1.05);
+}
+
+/* Delete Button */
+.delete-button {
+    background-color:transparent; /* Red */
+    color: #fff;
+    padding: 8px 12px;
+    width: auto;
+}
+
+.delete-button:hover {
+    background-color: #c82333; /* Darker Red */
+    transform: scale(1.1);
+}
+
+/* Move Buttons */
+.move-button {
+    background-color: #17a2b8; /* Cyan */
+    color: #fff;
+    padding: 8px 12px;
+}
+
+.move-button:hover {
+    background-color: #138496; /* Darker Cyan */
+    transform: scale(1.1);
+}
+
+/* Task List */
+ol {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+li {
+    background-color: #3a3f47; /* Slightly lighter dark */
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+li span.text {
+    font-size: 1.2rem;
+    flex: 1;
+    margin-right: 15px;
+    color: #ffffff;
+}
+
+
+
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+  }
