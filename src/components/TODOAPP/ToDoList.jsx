@@ -5,6 +5,9 @@ function ToDoList() {
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState("");
   const [error,setError] = useState("")
+  const [completed,setCompleted] = useState([])
+  const [editIndex,setEditIndex] = useState(null)
+  const [editedTask,setEditedTask] = useState("")
 
   function handleInputChange(event) {
     setNewTask(event.target.value);
@@ -64,6 +67,38 @@ function ToDoList() {
     }
   }
 
+  function taskCompleted(index){
+    const completedTask = tasks[index]
+
+    setCompleted((prevCompleted)=>[...prevCompleted,completedTask])
+
+    const updatedTasks = tasks.filter((_,i)=>i!==index)
+
+    setTasks(updatedTasks)
+
+  }
+
+
+  function editTask(index){
+    setEditIndex(index);
+    setEditedTask(tasks[index])
+  }
+  function saveEditedTask(){
+      if(editedTask.trim() === ""){
+        setError("Edited task cannot be empty.")
+        return
+      }
+
+
+      const updatedTasks = [...tasks];
+      updatedTasks[editIndex] = editedTask.trim();
+      setTasks(updatedTasks);
+      setEditIndex(null);
+      setEditedTask("");
+      setError("");
+
+  }
+
   return (
     <div>
       <div className="to-do-list">
@@ -88,26 +123,59 @@ function ToDoList() {
       
 
       <ol>
-        {tasks.map((task,index)=>{
-           
-            
-          return ( <li key={index}>
+        {tasks.map((task, index) => (
+          <li key={index}>
+            {/* Edit Mode */}
+            {editIndex === index ? (
+              <>
+                <input
+                  type="text"
+                  value={editedTask}
+                  onChange={(e) => setEditedTask(e.target.value)}
+                />
+                <button className="save-button" onClick={saveEditedTask}>
+                  Save
+                </button>
+              </>
+            ) : (
+              <>
                 <span className="text">{task}</span>
-                <button className="delete-button" onClick={()=>deleteTask(index)}>
-                    ❌
+                <button className="edit-button" onClick={() => editTask(index)}>
+                  ✏️
                 </button>
-
-                <button className="move-button" onClick={()=>moveTaskUp(index)}>
-                    ⬆️
+                <button className="complete-button" onClick={() => taskCompleted(index)}>
+                  ✅
                 </button>
-
-                <button className="move-button" onClick={()=>moveTaskDown(index)}>
-                    ⬇️
+                <button className="delete-button" onClick={() => deleteTask(index)}>
+                  ❌
                 </button>
+                <button className="move-button" onClick={() => moveTaskUp(index)}>
+                  ⬆️
+                </button>
+                <button className="move-button" onClick={() => moveTaskDown(index)}>
+                  ⬇️
+                </button>
+              </>
+            )}
+          </li>
+        ))}
+      </ol>
 
-            </li>)
+      {completed.length !== 0 ? <h2>Completed Task</h2> : null}
+      <strike>
+      <ol>
+        {completed.map((cTask,index)=>{
+            return(
+             
+                <li key={index}>
+                    <span className="text">{cTask}</span>
+
+                </li>
+                
+            )
         })}
       </ol>
+      </strike>
       
 
 

@@ -70,6 +70,17 @@ button {
     background-color: #c82333; /* Darker Red */
     transform: scale(1.1);
 }
+.complete-button {
+    background-color:transparent; /* Red */
+    color: #fff;
+    padding: 8px 12px;
+    width: auto;
+}
+
+.complete-button:hover {
+    background-color: #1fea30; /* Darker Red */
+    transform: scale(1.1);
+}
 
 /* Move Buttons */
 .move-button {
@@ -116,3 +127,25 @@ li span.text {
     font-size: 14px;
     margin-top: 10px;
   }
+
+h2{
+    text-align: center;
+}
+
+.save-button {
+    background-color: #4caf50;
+    color: white;
+    margin-left: 5px;
+  }
+  
+  .edit-button {
+    background-color: #2196f3;
+    color: white;
+    margin-left: 5px;
+  }
+  
+  input {
+    padding: 5px;
+    font-size: 1rem;
+  }
+  
